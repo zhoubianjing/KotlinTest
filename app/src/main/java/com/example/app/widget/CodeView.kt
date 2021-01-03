@@ -9,14 +9,19 @@ import android.util.TypedValue
 import android.view.Gravity
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.app.R
-import com.example.core.utils.Utils
+import com.example.core.utils.dp2px
 import java.util.*
 
 class CodeView(context: Context, attrs: AttributeSet?) : AppCompatTextView(context, attrs) {
 
     constructor(context: Context) : this(context, null)
 
-    private val paint = Paint()
+    private val paint = Paint().apply {
+        isAntiAlias = true
+        style = Paint.Style.STROKE
+        color = getContext().getColor(R.color.colorAccent)
+        strokeWidth = 6f.dp2px()
+    }
     private val codeList = arrayOf(
             "kotlin",
             "android",
@@ -33,11 +38,6 @@ class CodeView(context: Context, attrs: AttributeSet?) : AppCompatTextView(conte
         gravity = Gravity.CENTER
         setBackgroundColor(getContext().getColor(R.color.colorPrimary))
         setTextColor(Color.WHITE)
-        paint.isAntiAlias = true
-        paint.style = Paint.Style.STROKE
-        paint.color = getContext().getColor(R.color.colorAccent)
-        paint.strokeWidth = Utils.dp2px(6f)
-
         updateCode()
     }
 

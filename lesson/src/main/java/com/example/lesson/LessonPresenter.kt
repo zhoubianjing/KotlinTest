@@ -5,7 +5,6 @@ import com.example.core.http.HttpClient.get
 import com.example.core.utils.Utils.toast
 import com.example.lesson.entity.Lesson
 import com.google.gson.reflect.TypeToken
-import java.util.*
 
 class LessonPresenter(private var activity: LessonActivity? = null) {
     companion object {
@@ -29,12 +28,6 @@ class LessonPresenter(private var activity: LessonActivity? = null) {
     }
 
     fun showPlayback() {
-        val playbackLessons: MutableList<Lesson> = ArrayList()
-        for (lesson in lessons) {
-            if (lesson.state === Lesson.State.PLAYBACK) {
-                playbackLessons.add(lesson)
-            }
-        }
-        activity?.showResult(playbackLessons)
+        activity?.showResult(lessons.filter { it.state === Lesson.State.PLAYBACK })
     }
 }
