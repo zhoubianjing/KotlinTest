@@ -1,5 +1,4 @@
-# KotlinTest
-## Kotlin基础、进阶用法
+## Kotlin进阶用法
 
 #### 划重点
 1. elvis、operator 等操作符的使用
